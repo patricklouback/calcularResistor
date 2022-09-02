@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
         marginTop: '5%',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
     },
     footer: {
         width: '100%',
