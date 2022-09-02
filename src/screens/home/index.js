@@ -11,10 +11,12 @@ export function Home() {
     const [rEq, setReq] = useState('');
     const [R1, setR1] = useState(0.0);
     const [R2, setR2] = useState(0.0);
-    const [PAR, setPAR] = useState([]);
+    const [precisao, setPrecisao] = useState(null)
+
+
     const muitoPreciso = [0.9999, 1.0001];
     const Preciso = [0.999, 1.001];
-    const poucoPreciso = [0.99, 1.001];
+    const poucoPreciso = [0.99, 1.01];
 
     let req = rEq
     let r1
@@ -53,8 +55,9 @@ export function Home() {
         })
 
         if (pares.length === 0) {
-            diminuirPrecisao()
+            diminuirPrecisao();
         } else {
+            setPrecisao(true);
             escolheOPar();
         }
 
@@ -76,8 +79,32 @@ export function Home() {
         })
 
         if (pares.length === 0) {
+            diminuirMaisPrecisao()
+        } else {
+            setPrecisao(true);
+            escolheOPar();
+        }
+    }
+
+    function diminuirMaisPrecisao() {
+        resistoresPrecisao.map(i => {
+            r1 = i
+            resistoresComuns.map(j => {
+                r2 = j
+
+                temp = 1 / (1 / r1 + 1 / r2)
+                diferenca = req / temp
+
+                if (diferenca > poucoPreciso[0] && diferenca < poucoPreciso[1]) {
+                    pares.push([r1, r2])
+                }
+            })
+        })
+
+        if (pares.length === 0) {
             console.log('Não encontrou pares')
         } else {
+            setPrecisao(false);
             escolheOPar();
         }
     }
@@ -111,7 +138,7 @@ export function Home() {
             </View>
 
             <View style={styles.body}>
-                <View style={{ height: 80, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                <View style={styles.bodyRow}>
                     <TextInput
                         style={styles.input}
                         onChangeText={setReq}
@@ -125,13 +152,16 @@ export function Home() {
                         <Text style={styles.textBtn}>Calcular Resistor</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{ height: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>R Precisão: </Text>
-                    <Text>{R1}</Text>
-                </View>
-                <View style={{ height: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>R Comum: </Text>
-                    <Text>{R2}</Text>
+                <View style={[styles.bodyResposta, { borderColor: precisao ? 'green' : precisao == null ? 'gray' : 'red' }]}>
+                    <View style={[styles.bodyRow, { height: '50%', }]}>
+                        <Text style={styles.textResposta}>Resistor de Precisão: </Text>
+                        <Text style={[styles.textResposta, { fontSize: 20 }]}>{R1}</Text>
+                    </View>
+
+                    <View style={[styles.bodyRow, { height: '50%', }]}>
+                        <Text style={styles.textResposta}>Resistor Comum: </Text>
+                        <Text style={[styles.textResposta, { fontSize: 20 }]}>{R2}</Text>
+                    </View>
                 </View>
             </View>
 
