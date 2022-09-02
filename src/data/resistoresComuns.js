@@ -37,5 +37,6 @@ const rc6 = rc5.map(multiplica)
 const rc7 = rc6.map(multiplica)
 
 const resistoresComuns = rc.concat(rc2.concat(rc3.concat(rc4.concat(rc5.concat(rc6.concat(rc7))))))
+//const resistoresComuns = rc.concat(rc2.concat(rc3))
 
 export default resistoresComuns;

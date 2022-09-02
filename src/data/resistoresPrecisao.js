@@ -50,7 +50,8 @@ const rp = [
 ]
 
 function multiplica(num) {
-    return num * 10;
+    return Math.round((num * 10), -2);
+    //return num * 10;
 }
 
 const rp2 = rp.map(multiplica)
@@ -61,5 +62,6 @@ const rp6 = rp5.map(multiplica)
 const rp7 = rp6.map(multiplica)
 
 const resistoresPrecisao = rp.concat(rp2.concat(rp3.concat(rp4.concat(rp5.concat(rp6.concat(rp7))))))
+//const resistoresPrecisao = rp.concat(rp2.concat(rp3))
 
 export default resistoresPrecisao;

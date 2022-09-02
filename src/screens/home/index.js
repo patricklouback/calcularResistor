@@ -136,9 +136,14 @@ export function Home() {
                 <Text style={[styles.title, { marginLeft: '3%' }]}>Calcular R</Text>
                 <Text style={[styles.title, { fontSize: 20, marginTop: '2%' }]}>eq</Text>
             </View>
+            <View style={styles.viewTitle}>
+                <Text style={[styles.title, { fontSize: 20, marginTop: '20%', fontWeight: 'bold' }]}>
+                    Calcule os resistores em paralelo
+                </Text>
+            </View>
 
             <View style={styles.body}>
-                <View style={styles.bodyRow}>
+                <View style={[styles.bodyRow, { justifyContent: 'space-between' }]}>
                     <TextInput
                         style={styles.input}
                         onChangeText={setReq}
@@ -149,7 +154,7 @@ export function Home() {
                     <TouchableOpacity
                         style={styles.btn}
                         onPress={clique}>
-                        <Text style={styles.textBtn}>Calcular Resistor</Text>
+                        <Text style={styles.textBtn}>Calcular</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={[styles.bodyResposta, { borderColor: precisao ? 'green' : precisao == null ? 'gray' : 'red' }]}>
@@ -164,9 +169,6 @@ export function Home() {
                     </View>
                 </View>
             </View>
-
-            <View style={styles.footer}>
-            </View>
-        </View>
+        </View >
     )
 }
