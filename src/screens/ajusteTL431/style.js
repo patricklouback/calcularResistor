@@ -21,6 +21,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    footer: {
+        width: '100%',
+        height: '15%',
+        marginTop: '5%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+    },
     viewTitle: {
         width: '100%',
         alignItems: 'center',
@@ -29,13 +37,20 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
     },
+    input: {
+        height: 40,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: 'gray',
+        padding: 10,
+        fontSize: 14,
+    },
     btn: {
         height: 40,
-        width: '60%',
+        width: 120,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 5,
-        marginTop: '10%',
         backgroundColor: 'darkgray'
     },
     textBtn: {
